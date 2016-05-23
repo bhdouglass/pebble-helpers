@@ -1,13 +1,13 @@
 /**
  * Copyright (C) 2016 Brian Douglass (bhdouglass.com)
- * 
+ *
  * This program is free software: you can redistribute it and/or modify it under the terms
  * of the GNU General Public License version 3, as published by the Free Software Foundation.
- * 
+ *
  * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
  * without even the implied warranties of MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License along with this program.
  * If not, see http://www.gnu.org/licenses/.
  */
@@ -28,6 +28,10 @@ void text_layer_move(TextLayer *layer, int x, int y) {
     layer_move((Layer *) layer, x, y);
 }
 
+void bitmap_layer_move(BitmapLayer *layer, int x, int y) {
+    layer_move((Layer *) layer, x, y);
+}
+
 void layer_hide(Layer *layer) {
     if (layer != NULL) {
         layer_set_hidden(layer, true);
@@ -40,6 +44,12 @@ void text_layer_hide(TextLayer *layer) {
     }
 }
 
+void bitmap_layer_hide(BitmapLayer *layer) {
+    if (layer != NULL) {
+        layer_hide((Layer *) layer);
+    }
+}
+
 void layer_show(Layer *layer) {
     if (layer != NULL) {
         layer_set_hidden(layer, false);
@@ -47,6 +57,12 @@ void layer_show(Layer *layer) {
 }
 
 void text_layer_show(TextLayer *layer) {
+    if (layer != NULL) {
+        layer_show((Layer *) layer);
+    }
+}
+
+void bitmap_layer_show(BitmapLayer *layer) {
     if (layer != NULL) {
         layer_show((Layer *) layer);
     }
@@ -71,6 +87,15 @@ TextLayer *text_layer_init(Layer *window, GRect frame, GFont font, GColor backgr
     return layer;
 }
 
+BitmapLayer *bitmap_layer_init(Layer *window, GRect frame, GBitmap *bitmap, GColor background_color) {
+    BitmapLayer *layer = bitmap_layer_create(frame);
+    bitmap_layer_set_bitmap(layer, bitmap);
+    bitmap_layer_set_background_color(layer, background_color);
+    layer_add_child(window, bitmap_layer_get_layer(layer));
+
+    return layer;
+}
+
 void layer_destroy_safe(Layer *layer) {
     if (layer != NULL) {
         layer_destroy(layer);
@@ -81,6 +106,13 @@ void layer_destroy_safe(Layer *layer) {
 void text_layer_destroy_safe(TextLayer *layer) {
     if (layer != NULL) {
         text_layer_destroy(layer);
+        layer = NULL;
+    }
+}
+
+void bitmap_layer_destroy_safe(BitmapLayer *layer) {
+    if (layer != NULL) {
+        bitmap_layer_destroy(layer);
         layer = NULL;
     }
 }
