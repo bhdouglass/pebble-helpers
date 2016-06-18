@@ -1,0 +1,29 @@
+{
+  "name": "pebble-helpers",
+  "author": "Brian Douglass",
+  "version": "1.0.0",
+  "files": ["dist.zip"],
+  "keywords": ["pebble-package", "pebble"],
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/bhdouglass/pebble-helpers/issues"
+  },
+  "homepage": "https://github.com/bhdouglass/pebble-helpers",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bhdouglass/pebble-helpers.git"
+  },
+  "dependencies": {},
+  "pebble": {
+    "projectType": "package",
+    "sdkVersion": "3",
+    "targetPlatforms": [
+      "aplite",
+      "basalt",
+      "chalk"
+    ],
+    "resources": {
+      "media": []
+    }
+  }
+}

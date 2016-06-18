@@ -4,13 +4,12 @@ Shortcuts and nice things for Pebble developers.
 
 ## How to use
 
-Simply download the helper.h and helper.c files and add them
-to your project's src directory. Then `#include "helpers.h"`
-where needed!
+Using the [new style projects introduced in SDK 3.13](https://developer.pebble.com/blog/2016/06/07/pebble-packages/),
+simply run `pebble package install pebble-helpers` from your project's root.
 
 ## Functions
 
-See helpers.h for short descriptions of the functions.
+See include/helpers.h for short descriptions of the functions.
 
 ## License
 
